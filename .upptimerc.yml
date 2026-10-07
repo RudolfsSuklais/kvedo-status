@@ -1,31 +1,118 @@
-# Change these first
-owner: upptime # Your GitHub organization or username, where this repository lives
-repo: upptime # The name of this repository
+# Kvedo statusa lapa (Upptime). Docs: https://upptime.js.org/docs/configuration
+owner: RudolfsSuklais
+repo: kvedo-status
 
 sites:
-  - name: Google
-    url: https://www.google.com
-  - name: Wikipedia
-    url: https://en.wikipedia.org
-  - name: Hacker News
-    url: https://news.ycombinator.com
-  - name: Secret Site
-    url: $SECRET_SITE
+  - name: API
+    slug: api
+    url: https://api.kvedo.com/v1/health
+    expectedStatusCodes:
+      - 200
+    # Down, ja atbildē nav "status":"ok" (piem. DB nestrādā)
+    __dangerous__body_down_if_text_missing: '"status":"ok"'
+    maxResponseTime: 5000
+  - name: Lietotne (app.kvedo.com)
+    slug: lietotne
+    url: https://app.kvedo.com/
+    expectedStatusCodes:
+      - 200
+  - name: Mājaslapa (kvedo.com)
+    slug: majaslapa
+    url: https://kvedo.com/
+    expectedStatusCodes:
+      - 200
+
+# Paziņojumus sūta esošais kvedo-uptime (ntfy), šeit nekādu paziņojumu nav.
+assignees: []
 
 status-website:
-  # Add your custom domain name, or remove the `cname` line if you don't have a domain
-  # Uncomment the `baseUrl` line if you don't have a custom domain and add your repo name there
-  cname: demo.upptime.js.org
-  # baseUrl: /your-repo-name
-  logoUrl: https://raw.githubusercontent.com/upptime/upptime.js.org/master/static/img/icon.svg
-  name: Upptime
-  introTitle: "**Upptime** is the open-source uptime monitor and status page, powered entirely by GitHub."
-  introMessage: This is a sample status page which uses **real-time** data from our [GitHub repository](https://github.com/upptime/upptime). No server required — just GitHub Actions, Issues, and Pages. [**Get your own for free**](https://github.com/upptime/upptime)
+  # 1. posms (pirms DNS): lapa uz https://rudolfssuklais.github.io/kvedo-status/
+  baseUrl: /kvedo-status
+  # 2. posms (kad DNS ieraksts ir): izdzēs baseUrl rindu un atkomentē cname
+  # cname: status.kvedo.com
+  name: Kvedo statuss
+  logoUrl: https://kvedo.com/assets/apple-touch-icon.png
+  logoHref: https://kvedo.com
+  favicon: https://kvedo.com/assets/favicon-32.png
+  theme: light
+  introTitle: "**Kvedo** sistēmu statuss"
+  introMessage: Šeit redzams, vai Kvedo lietotne, API un mājaslapa šobrīd darbojas. Pārbaude notiek ik pēc 5 minūtēm.
   navbar:
-    - title: Status
+    - title: Statuss
       href: /
-    - title: GitHub
-      href: https://github.com/$OWNER/$REPO
+    - title: kvedo.com
+      href: https://kvedo.com
 
-# Upptime also supports notifications, assigning issues, and more
-# See https://upptime.js.org/docs/configuration
+i18n:
+  locale: lv-LV
+  up: Darbojas
+  down: Nedarbojas
+  degraded: Traucējumi
+  url: Adrese
+  status: Statuss
+  history: Vēsture
+  ms: ms
+  responseTime: Atbildes laiks
+  responseTimeDay: Atbildes laiks 24 h
+  responseTimeWeek: Atbildes laiks 7 dienās
+  responseTimeMonth: Atbildes laiks 30 dienās
+  responseTimeYear: Atbildes laiks gadā
+  uptime: Pieejamība
+  uptimeDay: Pieejamība 24 h
+  uptimeWeek: Pieejamība 7 dienās
+  uptimeMonth: Pieejamība 30 dienās
+  uptimeYear: Pieejamība gadā
+  responseTimeGraphAlt: Atbildes laika grafiks
+  liveStatus: Pašreizējais statuss
+  allSystemsOperational: Visas sistēmas darbojas
+  degradedPerformance: Darbība ar traucējumiem
+  completeOutage: Pilns pārtraukums
+  partialOutage: Daļējs pārtraukums
+  activeIncidents: Aktīvie incidenti
+  incidentReport: "Incidents #$NUMBER →"
+  activeIncidentSummary: "Atvērts $DATE, ieraksti: $POSTS"
+  incidentTitle: Incidents $NUMBER
+  incidentDetails: Incidenta informācija
+  incidentFixed: Novērsts
+  incidentOngoing: Notiek
+  incidentOpenedAt: Atvērts
+  incidentClosedAt: Slēgts
+  incidentViewOnGitHub: Skatīt GitHub
+  incidentCommentSummary: Publicēts $DATE, autors $AUTHOR
+  incidentBack: "← Atpakaļ uz incidentiem"
+  pastIncidents: Iepriekšējie incidenti
+  pastIncidentsResolved: "Novērsts $MINUTES min laikā, ieraksti: $POSTS"
+  overallUptime: "Kopējā pieejamība: $UPTIME"
+  overallUptimeTitle: Kopējā pieejamība
+  averageResponseTime: "Vidējais atbildes laiks: $TIMEms"
+  averageResponseTimeTitle: Vidējais atbildes laiks
+  sevelDayResponseTime: Atbildes laiks 7 dienās
+  responseTimeMs: Atbildes laiks (ms)
+  loading: Ielādē
+  navGitHub: GitHub
+  footer: Statusa lapu nodrošina [Upptime](https://upptime.js.org), [avota kods]($REPO)
+  rateLimitExceededTitle: Pārāk daudz pieprasījumu
+  rateLimitExceededIntro: Šī lapa no tavas IP adreses ir saņēmusi pārāk daudz pieprasījumu. Pamēģini vēlreiz pēc stundas.
+  rateLimitExceededWhatDoesErrorMean: Ko tas nozīmē?
+  rateLimitExceededErrorMeaning: Lapa datus ņem no GitHub API, kas vienai IP adresei atļauj 60 pieprasījumus stundā.
+  rateLimitExceededErrorHowCanFix: Kā to labot?
+  rateLimitExceededErrorFix: Pagaidi stundu, un limits atjaunosies.
+  errorTitle: Radās kļūda
+  errorIntro: Neizdevās ielādēt jaunāko statusu.
+  errorText: Pamēģini vēlreiz pēc brīža.
+  errorHome: Uz sākumu
+  pastScheduledMaintenance: Iepriekšējie plānotie darbi
+  scheduledMaintenance: Plānotie darbi
+  scheduledMaintenanceSummaryStarted: Sākās $DATE, ilgums $DURATION min
+  scheduledMaintenanceSummaryStarts: Sāksies $DATE, ilgums $DURATION min
+  startedAt: Sākās
+  startsAt: Sāksies
+  duration: Ilgums
+  durationMin: $DURATION min
+  incidentCompleted: Pabeigts
+  incidentScheduled: Plānots
+  duration24H: 24 h
+  duration7D: 7 d
+  duration30D: 30 d
+  duration1Y: 1 g
+  durationAll: visi

@@ -1,17 +1,16 @@
 ---
-name: Maintenance Event
-about: Schedule a work window
-title: "[Scheduled Maintenance] Site down for Maintenance"
+name: Plānotie darbi
+about: Ieplāno apkopes logu (rādās statusa lapā)
+title: "Plānotie darbi: "
 labels: maintenance
 assignees: ''
 
 ---
 
 <!--
-start: 2021-08-24T13:00:00.220Z
-end: 2021-08-24T14:00:00.220Z
-expectedDown: google, hacker-news
+start: 2026-10-10T20:00:00.000Z
+end: 2026-10-10T21:00:00.000Z
+expectedDown: api, lietotne
 -->
 
-**Additional context**
-Who/what/when/where/why is this maintenance happening
+Kas notiks un kas būs nepieejams.
