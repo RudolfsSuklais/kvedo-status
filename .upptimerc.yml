@@ -26,10 +26,8 @@ sites:
 assignees: []
 
 status-website:
-  # 1. posms (pirms DNS): lapa uz https://rudolfssuklais.github.io/kvedo-status/
-  baseUrl: /kvedo-status
-  # 2. posms (kad DNS ieraksts ir): izdzēs baseUrl rindu un atkomentē cname
-  # cname: status.kvedo.com
+  # Pielāgots domēns (DNS: status.kvedo.com CNAME rudolfssuklais.github.io)
+  cname: status.kvedo.com
   name: Kvedo statuss
   logoUrl: https://kvedo.com/assets/apple-touch-icon.png
   logoHref: https://kvedo.com
